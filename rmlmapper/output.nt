@@ -1,0 +1,6 @@
+<http://example.com/1> <http://example.com/id_is> "1".
+<http://example.com/1> <http://example.com/place_is> "Tokyo".
+<http://example.com/2> <http://example.com/id_is> "2".
+<http://example.com/2> <http://example.com/place_is> "Nagoya".
+<http://example.com/3> <http://example.com/id_is> "3".
+<http://example.com/3> <http://example.com/place_is> "Osaka".
