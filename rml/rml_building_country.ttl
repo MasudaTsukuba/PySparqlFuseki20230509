@@ -17,7 +17,7 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "https://example.com/country/id/{bc_id}" ;
+    rr:template "http://example.com/country/id/{bc_id}" ;
   ] ;
 
   rr:predicateObjectMap [

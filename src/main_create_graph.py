@@ -4,6 +4,7 @@ import os
 
 def read_rdf():
     g = Graph()
+    # g = Graph(store='BerkeleyDB')
     rdf_files = os.listdir('../rml_rdf/')
     for file in rdf_files:
         if file.endswith('.ttl'):

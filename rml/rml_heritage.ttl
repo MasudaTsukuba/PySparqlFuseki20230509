@@ -16,7 +16,7 @@
   ] ;
 
   rr:subjectMap [
-    rr:template "https://example.com/heritage/id/{p_id}" ;
+    rr:template "http://example.com/heritage/id/{p_id}" ;
   ] ;
 
   rr:predicateObjectMap [

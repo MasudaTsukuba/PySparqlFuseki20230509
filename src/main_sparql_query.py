@@ -15,19 +15,19 @@ def read_query(query):
     input_query = ''
     with open(file_name, 'r') as f:
         input_query = f.read()
-    input_query = """
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    PREFIX ex: <http://example.com/ontology/>
-    PREFIX country: <http://example.com/predicate/country>
-    PREFIX country_name: <http://example.com/predicate/country_name/>
-    PREFIX country_comment: <http://example.com/predicate/country_comment/>
-    
-    SELECT ?s ?name 
-    WHERE {
-        ?s rdf:type ex:Hotel.
-        ?s rdf:label ?name.
-    }
-    """
+    # input_query = """
+    # PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    # PREFIX ex: <http://example.com/ontology/>
+    # PREFIX country: <http://example.com/predicate/country>
+    # PREFIX country_name: <http://example.com/predicate/country_name>
+    # PREFIX country_comment: <http://example.com/predicate/country_comment>
+    #
+    # SELECT ?s ?name
+    # WHERE {
+    #     ?s rdf:type ex:Hotel.
+    #     ?s rdf:label ?name.
+    # }
+    # """
     return input_query
 
 
@@ -58,4 +58,11 @@ def sparql_query(query):
 
 
 if __name__ == "__main__":
-    sparql_query('q1.txt')
+    # sparql_query('q1.txt')
+    # sparql_query('q2.txt')
+    # sparql_query('q3a.txt')
+    # sparql_query('q3b.txt')
+    # sparql_query('q4.txt')
+    # sparql_query('q5.txt')
+    # sparql_query('q6.txt')
+    sparql_query('q7.txt')
