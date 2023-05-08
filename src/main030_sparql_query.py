@@ -61,10 +61,11 @@ def execute_query(query):
 if __name__ == "__main__":
     # execute_query('q1.txt')
     # execute_query('q1pred.txt')
+    execute_query('q1pred_build.txt')
     # execute_query('q2.txt')
     # execute_query('q3a.txt')
     # execute_query('q3b.txt')
     # execute_query('q4.txt')
     # execute_query('q5.txt')
-    execute_query('q6.txt')
+    # execute_query('q6.txt')
     # execute_query('q7.txt')

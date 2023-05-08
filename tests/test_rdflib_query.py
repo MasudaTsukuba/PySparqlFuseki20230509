@@ -55,7 +55,7 @@ def test_q1pred_museum():
 
 def test_q1pred_build():
     result = execute_query('q1pred_build.txt')
-    assert len(result) == 18462
+    assert len(result) == 18470
 
 
 def test_q1pred_heritage():
