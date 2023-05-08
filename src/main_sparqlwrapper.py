@@ -34,5 +34,6 @@ def execute_query(input_file):
 
 
 if __name__ == '__main__':
-    results = execute_query('../query/q1.txt')
+    # results = execute_query('/home/masuda/PycharmProjects/PySparqlQuery20230508/query/q1.txt')
+    results = execute_query('/home/masuda/PycharmProjects/PySparqlQuery20230508/query/q6.txt')
     print(len(results))

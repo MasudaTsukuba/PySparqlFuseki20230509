@@ -11,7 +11,7 @@ def read_rdf():
 
 
 def read_query(query):
-    file_name = f'/home/masuda/PycharmProjects/PySparqlFuseki20230501/query/{query}'
+    file_name = f'/home/masuda/PycharmProjects/PySparqlQuery20230508/query/{query}'
     input_query = ''
     with open(file_name, 'r') as f:
         input_query = f.read()
@@ -60,10 +60,11 @@ def execute_query(query):
 
 if __name__ == "__main__":
     # execute_query('q1.txt')
+    # execute_query('q1pred.txt')
     # execute_query('q2.txt')
     # execute_query('q3a.txt')
-    execute_query('q3b.txt')
+    # execute_query('q3b.txt')
     # execute_query('q4.txt')
     # execute_query('q5.txt')
-    # execute_query('q6.txt')
+    execute_query('q6.txt')
     # execute_query('q7.txt')
