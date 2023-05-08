@@ -4,14 +4,14 @@ import pandas as pd
 
 def read_rdf():
     g = Graph()
-    g.parse(f'../graph/graph_all.ttl')
+    g.parse(f'/home/masuda/PycharmProjects/PySparqlFuseki20230501/graph/graph_all.ttl')
     length = len(g)
     pass
     return g
 
 
 def read_query(query):
-    file_name = f'../query/{query}'
+    file_name = f'/home/masuda/PycharmProjects/PySparqlFuseki20230501/query/{query}'
     input_query = ''
     with open(file_name, 'r') as f:
         input_query = f.read()
@@ -46,23 +46,24 @@ def convert_results(sparql_results):
     return df
 
 
-def sparql_query(query):
+def execute_query(query):
     g = read_rdf()
     input_query = read_query(query)
     sparql_results = g.query(input_query)
     print(len(sparql_results.bindings))
     df = convert_results(sparql_results)
     output_file = query.replace('.txt', '.csv')
-    df.to_csv(f'../output/{output_file}', index=False)
+    df.to_csv(f'/home/masuda/PycharmProjects/PySparqlFuseki20230501/output/{output_file}', index=False)
     pass
+    return sparql_results.bindings
 
 
 if __name__ == "__main__":
-    # sparql_query('q1.txt')
-    # sparql_query('q2.txt')
-    # sparql_query('q3a.txt')
-    sparql_query('q3b.txt')
-    # sparql_query('q4.txt')
-    # sparql_query('q5.txt')
-    # sparql_query('q6.txt')
-    # sparql_query('q7.txt')
+    # execute_query('q1.txt')
+    # execute_query('q2.txt')
+    # execute_query('q3a.txt')
+    execute_query('q3b.txt')
+    # execute_query('q4.txt')
+    # execute_query('q5.txt')
+    # execute_query('q6.txt')
+    # execute_query('q7.txt')
