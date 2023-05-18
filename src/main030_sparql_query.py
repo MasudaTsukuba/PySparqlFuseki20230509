@@ -2,9 +2,12 @@ from rdflib import Graph
 import pandas as pd
 
 
+working_path = '/home/masuda/PycharmProjects/PySparqlFuseki20230509/'
+
+
 def read_rdf():
     g = Graph()
-    g.parse(f'/home/masuda/PycharmProjects/PySparqlFuseki20230501/graph/graph_all.ttl')
+    g.parse(f'{working_path}graph/graph_all.ttl')
     length = len(g)
     pass
     return g
@@ -12,7 +15,7 @@ def read_rdf():
 
 def read_query(query):
     file_name = f'/home/masuda/PycharmProjects/PySparqlQuery20230508/query/{query}'
-    input_query = ''
+    # input_query = ''
     with open(file_name, 'r') as f:
         input_query = f.read()
     # input_query = """
@@ -38,10 +41,10 @@ def convert_results(sparql_results):
         for item in binding.items():
             result.append(str(item[1]))
         results.append(result)
-    vars = []
+    my_vars = []
     for var in sparql_results.vars:
-        vars.append(str(var))
-    df = pd.DataFrame(results, columns=vars)
+        my_vars.append(str(var))
+    df = pd.DataFrame(results, columns=my_vars)
     pass
     return df
 
@@ -52,8 +55,9 @@ def execute_query(query):
     sparql_results = g.query(input_query)
     print(len(sparql_results.bindings))
     df = convert_results(sparql_results)
+    sorted_df = df.sort_values(by='s')
     output_file = query.replace('.txt', '.csv')
-    df.to_csv(f'/home/masuda/PycharmProjects/PySparqlFuseki20230501/output/{output_file}', index=False)
+    sorted_df.to_csv(f'{working_path}output_rdf/{output_file}', index=False)
     pass
     return sparql_results.bindings
 
@@ -61,7 +65,7 @@ def execute_query(query):
 if __name__ == "__main__":
     # execute_query('q1.txt')
     # execute_query('q1pred.txt')
-    execute_query('q1pred_build.txt')
+    # execute_query('q1pred_build.txt')
     # execute_query('q2.txt')
     # execute_query('q3a.txt')
     # execute_query('q3b.txt')
@@ -69,3 +73,4 @@ if __name__ == "__main__":
     # execute_query('q5.txt')
     # execute_query('q6.txt')
     # execute_query('q7.txt')
+    execute_query('query_type_object_hotel20230518.txt')
