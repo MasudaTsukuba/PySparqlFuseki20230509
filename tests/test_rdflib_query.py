@@ -61,3 +61,15 @@ def test_q1pred_build():
 def test_q1pred_heritage():
     result = execute_query('q1pred_heritage.txt')
     assert len(result) == 5191
+
+
+def test_query_type_object_hotel20230518():
+    query = 'query_type_object_hotel20230518.txt'
+    result = execute_query(query)
+    assert len(result) == 44490
+
+
+def test_query_extract_hotels_with_name20230519():
+    query = 'query_extract_hotels_with_name20230519.txt'
+    result = execute_query(query)
+    assert len(result) == 822

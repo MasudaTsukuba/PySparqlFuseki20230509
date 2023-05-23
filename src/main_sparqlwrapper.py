@@ -1,15 +1,17 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 import pandas as pd
+import os
 
-
-working_path = '/home/masuda/PycharmProjects/PySparqlFuseki20230509/'
-common_query_path = '/home/masuda/PycharmProjects/PySparqlQuery20230508/query/'
+working_path = os.getcwd()
+if working_path.endswith('src'):
+    working_path = os.path.dirname(working_path)
+common_query_path = os.path.dirname(working_path)+'/PySparqlQuery20230508/'
 
 
 def execute_query(input_file):
-    query = ''
-    with open(common_query_path+input_file, 'r') as f:
-        query = f.read()
+    sparql_query = ''
+    with open(common_query_path+'/query/'+input_file, 'r') as f:
+        sparql_query = f.read()
     sparql = SPARQLWrapper(
         "http://localhost:3030/landmark20230518/sparql"
     )
@@ -26,7 +28,8 @@ def execute_query(input_file):
     #     LIMIT 10
     #     """
     # )
-    sparql.setQuery(query)
+    sparql.setQuery(sparql_query)
+    print(sparql_query)
     ret = None
     try:
         ret = sparql.queryAndConvert()
@@ -55,14 +58,31 @@ def execute_query(input_file):
         return df_tmp
 
     df = convert_results(ret)
-    sorted_df = df.sort_values(by='s')
+    header = df.columns
+    keys = []
+    for element in header:
+        keys.append(element)
+    sorted_df = df.sort_values(by=keys)
     output_file = input_file.replace('.txt', '.csv')
-    sorted_df.to_csv(f'{working_path}output_fuseki/{output_file}', index=False)
+    sorted_df.to_csv(f'{working_path}/output_fuseki/{output_file}', index=False)
+
+    return sparql_results
 
 
 if __name__ == '__main__':
     # results = execute_query('/home/masuda/PycharmProjects/PySparqlQuery20230508/query/q1.txt')
     # results = execute_query('/home/masuda/PycharmProjects/PySparqlQuery20230508/query/q1pred_build.txt')
     # results = execute_query('/home/masuda/PycharmProjects/PySparqlQuery20230508/query/q6.txt')
-    query = 'query_type_object_hotel20230518.txt'
+    # query = 'q1.txt'
+    # query = 'q5.txt'
+    query = 'q5b.txt'
+    # query = 'q1pred_hotel.txt'
+    # query = 'q1pred_build.txt'
+    # query = 'query_extract_museums20230519.txt'
+    # query = 'query_extract_buildings20230519.txt'
+    # query = 'query_extract_heritages20230519.txt'
+    # query = 'query_extract_hotels_with_name20230519.txt'
+    # query = 'query_extract_labels20230519.txt'
+    # query = 'query_type_object_hotel20230518.txt'
+    query = 'q1pred_get_hotel.txt'
     execute_query(query)

@@ -1,20 +1,23 @@
 from rdflib import Graph
 import pandas as pd
+import os
 
-
-working_path = '/home/masuda/PycharmProjects/PySparqlFuseki20230509/'
+working_path = os.getcwd()
+if working_path.endswith('src'):
+    working_path = os.path.dirname(working_path)
+common_query_path = os.path.dirname(working_path)+'/PySparqlQuery20230508/'
 
 
 def read_rdf():
     g = Graph()
-    g.parse(f'{working_path}graph/graph_all.ttl')
+    g.parse(f'{working_path}/graph/graph_all.ttl')
     length = len(g)
     pass
     return g
 
 
 def read_query(query):
-    file_name = f'/home/masuda/PycharmProjects/PySparqlQuery20230508/query/{query}'
+    file_name = f'{common_query_path}query/{query}'
     # input_query = ''
     with open(file_name, 'r') as f:
         input_query = f.read()
@@ -57,7 +60,7 @@ def execute_query(query):
     df = convert_results(sparql_results)
     sorted_df = df.sort_values(by='s')
     output_file = query.replace('.txt', '.csv')
-    sorted_df.to_csv(f'{working_path}output_rdf/{output_file}', index=False)
+    sorted_df.to_csv(f'{working_path}/output_rdf/{output_file}', index=False)
     pass
     return sparql_results.bindings
 
@@ -73,4 +76,5 @@ if __name__ == "__main__":
     # execute_query('q5.txt')
     # execute_query('q6.txt')
     # execute_query('q7.txt')
-    execute_query('query_type_object_hotel20230518.txt')
+    query = 'query_type_object_hotel20230518.txt'
+    execute_query(query)
