@@ -5,7 +5,8 @@ import os
 working_path = os.getcwd()
 if working_path.endswith('src'):
     working_path = os.path.dirname(working_path)
-common_query_path = os.path.dirname(working_path)+'/PySparqlQuery20230508/'
+# common_query_path = os.path.dirname(working_path)+'/PySparqlQuery20230508/'
+common_query_path = os.path.dirname(working_path)+'/PySparqlSatoNew20230509/query/'
 
 
 def read_rdf():

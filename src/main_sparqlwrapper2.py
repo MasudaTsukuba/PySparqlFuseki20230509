@@ -1,4 +1,4 @@
-from SPARQLWrapper import SPARQLWrapper, JSON, SPARQLWrapper2
+from SPARQLWrapper import JSON, SPARQLWrapper2
 
 
 sparql = SPARQLWrapper2("http://localhost:3030/landmark20230406/sparql")

@@ -5,12 +5,13 @@ import os
 working_path = os.getcwd()
 if working_path.endswith('src'):
     working_path = os.path.dirname(working_path)
-common_query_path = os.path.dirname(working_path)+'/PySparqlQuery20230508/'
+# common_query_path = os.path.dirname(working_path)+'/PySparqlQuery20230508/'
+common_query_path = os.path.dirname(working_path)+'/PySparqlSatoNew20230509/query/'
 
 
 def execute_query(input_file):
     sparql_query = ''
-    with open(common_query_path+'/query/'+input_file, 'r') as f:
+    with open(common_query_path+input_file, 'r') as f:
         sparql_query = f.read()
     sparql = SPARQLWrapper(
         "http://localhost:3030/landmark20230518/sparql"
